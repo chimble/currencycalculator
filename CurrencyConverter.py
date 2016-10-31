@@ -12,9 +12,9 @@ class CurrencyConverter():
         elif self.currency_code != to:
             if self.currency_code == 'GBP':
                 if to == 'USD':
-                    return Currency(to, self.amount * (rates['GBP']/rates['USD']))
+                    return Currency(to, self.amount * (rates['USD']/rates['GBP']))
                 elif to == 'EUR':
-                    return Currency(to, self.amount * (rates['GBP']/rates['EUR']))
+                    return Currency(to, self.amount * (rates['EUR']/rates['GBP']))
             elif self.currency_code == 'EUR':
                 if to == 'USD':
                     return Currency(to, self.amount * (rates['USD']/rates['EUR']))
