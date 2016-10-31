@@ -10,9 +10,15 @@ class Currency():
         if self.currency_code == other.currency_code:
             return Currency(self.currency_code, self.amount + other.amount)
         else:
-            pass
+            raise Exception("DifferentCurrencyCodeError")
     def __sub__(self, other):
         if self.currency_code == other.currency_code:
             return Currency(self.currency_code, self.amount - other.amount)
         else:
-            pass
+            raise Exception("DifferentCurrencyCodeError")
+    def __mul__(self, c):
+        return Currency(self.currency_code, (self.amount) * c)
+        pass
+
+class DifferentCurrencyCodeError(Exception):
+    pass

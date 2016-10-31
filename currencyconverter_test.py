@@ -25,3 +25,9 @@ def test_sub_values_dollars():
     a = Currency('USD', 8)
     b = Currency('USD', 5)
     assert a - b == Currency('USD', 3)
+
+def test_mult_values():
+    a = Currency('USD', 8)
+    c = 5
+    b = a.amount * c
+    assert a * c == Currency('USD', 40)
