@@ -25,7 +25,7 @@ class CurrencyConverter():
                     return Currency(to, self.amount * (rates['GBP']/rates['USD']))
                 elif to == 'EUR':
                     return Currency(to, self.amount * (rates['EUR']/rates['USD']))
-        if self.currency_code or to not in rates:
+        if self.currency_code not in rates or to not in rates:
             raise Exception("UnknownCurrencyCodeError")
 
 class UnknownCurrencyCodeError(Exception):
