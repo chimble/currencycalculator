@@ -41,10 +41,15 @@ def test_currency_code_same():
     assert CurrencyConverter.convert(a, a.currency_code, 'USD') == Currency('USD', 8)
 
 def test_currency_code_dif():
-    a = Currency('USD', 1)
-    to = 'GBP'
-    assert CurrencyConverter.convert(a, a.currency_code, to) == Currency('GBP', 0.82)
+    a = Currency('GBP', 2)
+    to = 'USD'
+    assert CurrencyConverter.convert(a, a.currency_code, to) == Currency('USD', 1.64)
 
 def test_unknown_currency():
     a = Currency('USD', 1)
     assert CurrencyConverter.convert(a, a.currency_code, 'X') != Currency('USD', 1)
+
+def test_dissimmilar_codes_add():
+    a = Currency('EUR', 8)
+    b = Currency('USD', 5)
+    assert a + b == Currency('USD', 13)

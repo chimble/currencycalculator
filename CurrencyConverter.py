@@ -12,19 +12,19 @@ class CurrencyConverter():
         elif self.currency_code != to:
             if self.currency_code == 'GBP':
                 if to == 'USD':
-                    return Currency(to, (rates['GBP']/rates['USD']))
+                    return Currency(to, self.amount * (rates['GBP']/rates['USD']))
                 elif to == 'EUR':
-                    return Currency(to, (rates['GBP']/rates['EUR']))
+                    return Currency(to, self.amount * (rates['GBP']/rates['EUR']))
             elif self.currency_code == 'EUR':
                 if to == 'USD':
-                    return Currency(to, (rates['USD']/rates['EUR']))
+                    return Currency(to, self.amount * (rates['USD']/rates['EUR']))
                 elif to == 'GBP':
-                    return Currency(to, (rates['GBP']/rates['EUR']))
+                    return Currency(to, self.amount * (rates['GBP']/rates['EUR']))
             elif self.currency_code == 'USD':
                 if to ==  'GBP':
-                    return Currency(to, (rates['GBP']/rates['USD']))
+                    return Currency(to, self.amount * (rates['GBP']/rates['USD']))
                 elif to == 'EUR':
-                    return Currency(to, (rates['EUR']/rates['USD']))
+                    return Currency(to, self.amount * (rates['EUR']/rates['USD']))
         if self.currency_code or to not in rates:
             raise Exception("UnknownCurrencyCodeError")
 
