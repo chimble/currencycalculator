@@ -1,3 +1,5 @@
+#from CurrencyConverter import CurrencyConverter
+
 class Currency():
     def __init__(self, currency_code, amount = 0):
         if amount == 0:

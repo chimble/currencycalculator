@@ -1,5 +1,5 @@
 from Currency import Currency
-
+from CurrencyConverter import CurrencyConverter
 
 def test_equals_eight_dollars():
     a = Currency('USD', 8)
@@ -35,3 +35,12 @@ def test_single_arg():
     a = Currency('$8')
     b = Currency('USD', 8)
     assert a == b
+
+def test_currency_code_same():
+    a = Currency('USD', 8)
+    assert CurrencyConverter.convert(a, a.currency_code, 'USD') == Currency('USD', 8)
+
+def test_currency_code_dif():
+    a = Currency('USD', 1)
+    to = 'GBP'
+    assert CurrencyConverter.convert(a, a.currency_code, to) == Currency('GBP', 0.82)
