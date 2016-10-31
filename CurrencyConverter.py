@@ -6,6 +6,7 @@ class CurrencyConverter():
     def __init__(self, rates):
         pass
     def convert(self, currency_code, to):
+
         if self.currency_code == to:
             return Currency(self.currency_code, self.amount)
         elif self.currency_code != to:
@@ -24,3 +25,8 @@ class CurrencyConverter():
                     return Currency(to, (rates['GBP']/rates['USD']))
                 elif to == 'EUR':
                     return Currency(to, (rates['EUR']/rates['USD']))
+        if self.currency_code or to not in rates:
+            raise Exception("UnknownCurrencyCodeError")
+
+class UnknownCurrencyCodeError(Exception):
+    pass

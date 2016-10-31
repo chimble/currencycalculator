@@ -44,3 +44,7 @@ def test_currency_code_dif():
     a = Currency('USD', 1)
     to = 'GBP'
     assert CurrencyConverter.convert(a, a.currency_code, to) == Currency('GBP', 0.82)
+
+def test_unknown_currency():
+    a = Currency('USD', 1)
+    assert CurrencyConverter.convert(a, a.currency_code, 'X') != Currency('USD', 1)
