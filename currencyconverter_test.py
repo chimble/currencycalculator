@@ -20,3 +20,8 @@ def test_add_values_dollars():
     a = Currency('USD', 8)
     b = Currency('USD', 5)
     assert a + b == Currency('USD', 13)
+
+def test_sub_values_dollars():
+    a = Currency('USD', 8)
+    b = Currency('USD', 5)
+    assert a - b == Currency('USD', 3)
