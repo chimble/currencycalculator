@@ -6,3 +6,8 @@ class Currency():
         if self.currency_code == other.currency_code and self.amount == other.amount:
             return True
         return False
+    def __add__(self, other):
+        if self.currency_code == other.currency_code:
+            return Currency(self.currency_code, self.amount + other.amount)
+        else:
+            pass
