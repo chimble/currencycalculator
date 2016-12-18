@@ -1,34 +1,17 @@
 from Currency import Currency
 
-rates = {'USD': 1, 'GBP': 0.82, 'EUR': 0.91}
-class CurrencyConverter():
-
-    def __init__(self, rates):
-        pass
-    def convert(self, currency_code, to):
-        if self.currency_code not in rates or to not in rates:
-            raise Exception("UnknownCurrencyCodeError")
-        return Currency(to, self.amount * (rates[to]/rates[self.currency_code]))
-        # if self.currency_code == to:
-        #     return Currency(self.currency_code, self.amount)
-        # elif self.currency_code != to:
-        #
-            # if self.currency_code == 'GBP':
-            #     if to == 'USD':
-            #         return Currency(to, self.amount * (rates['USD']/rates['GBP']))
-            #     elif to == 'EUR':
-            #         return Currency(to, self.amount * (rates['EUR']/rates['GBP']))
-            # elif self.currency_code == 'EUR':
-            #     if to == 'USD':
-            #         return Currency(to, self.amount * (rates['USD']/rates['EUR']))
-            #     elif to == 'GBP':
-            #         return Currency(to, self.amount * (rates['GBP']/rates['EUR']))
-            # elif self.currency_code == 'USD':
-            #     if to ==  'GBP':
-            #         return Currency(to, self.amount * (rates['GBP']/rates['USD']))
-            #     elif to == 'EUR':
-            #         return Currency(to, self.amount * (rates['EUR']/rates['USD']))
-
 
 class UnknownCurrencyCodeError(Exception):
     pass
+
+
+class CurrencyConverter():
+
+    def __init__(self, rates):
+        self.rates = rates
+
+    def convert(self, currency, to_code):
+        try:
+            return Currency(to_code, round(currency.amount * (self.rates[to_code]/self.rates[currency.currency_code]), 2))
+        except:
+            raise UnknownCurrencyCodeError()
